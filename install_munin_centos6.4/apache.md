@@ -29,27 +29,6 @@ vi /usr/local/apache2/conf/httpd.conf
   ADD Group apache
 /usr/local/apache2/bin/apachectl restart
 ```
-#### change cgi place
-``` Bash
-vi /usr/local/apache2/conf/httpd.conf
-  COMMENT # ScriptAlias /cgi-bin/ "/usr/local/apache2/cgi-bin/"
-  ADD ScriptAlias /cgi-bin/ "/var/www/cgi-bin/"
-  COMMENT
-    #<Directory "/usr/local/apache2/cgi-bin">
-    #    AllowOverride None
-    #    Options None
-    #    Order allow,deny
-    #    Allow from all
-    #</Directory>
-  ADD
-    <Directory "/var/www/cgi-bin">
-        AllowOverride None
-        Options ExecCGI
-        Order allow,deny
-        Allow from all
-    </Directory>
-/usr/local/apache2/bin/apachectl restart
-```
 #### add mod_expires_module
 ``` Bash
 cd /usr/local/src/httpd-2.2.31/modules/metadata/
